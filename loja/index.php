@@ -1,7 +1,7 @@
 <?php include("cabecalho.php"); ?>
 
-<?php if(isset($_GET["login"]) && $_GET["login"]==true) { ?>
-    <p class="alert-success">Logado com sucesso!</p>
+<?php if(isset($_COOKIE["usuario_logado"])) { ?>
+    <p class="text-success">Você está logado como <?= $_COOKIE["usuario_logado"] ?></p>
 <?php } ?>
 
 <?php if(isset($_GET["login"]) && $_GET["login"]==false) { ?>
