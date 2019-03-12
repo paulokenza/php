@@ -17,7 +17,8 @@
 <h1>Bem vindo!</h1>
 
 <?php if(usuarioEstaLogado()) {?>
-    <p class="text-sucess">Você está logado como <?=$_COOKIE["usuario_logado"] ?>.</p>
+    <p class="text-sucess">Você está logado como <?=$_SESSION["usuario_logado"] ?>. <br>
+        <a href="logout.php">Deslogar</a></p>
 <?php } else {?>
 
 <h2>Login</h2>
