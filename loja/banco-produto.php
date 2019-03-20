@@ -1,6 +1,7 @@
 <?php
     require_once("conecta.php");
 
+
 function listaProdutos($conexao) {
     $produtos = array();
     $resultado = mysqli_query($conexao, "select p.*, c.nome as categoria_nome from produtos as p join categorias as c on p.categoria_id = c.id");
@@ -12,15 +13,15 @@ function listaProdutos($conexao) {
     return $produtos;
 }
 
-function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado) {
+function insereProduto($conexao, Produto $produto) {
     $query = "insert into produtos (nome, preco, descricao, categoria_id, usado)
-        values ('{$nome}', {$preco}, '{$descricao}', {$categoria_id}, {$usado})";
+        values ('{$produto->nome}', {$produto->preco}, '{$produto->descricao}', {$produto->categoria_id}, {$produto->usado})";
     return mysqli_query($conexao, $query);
 }
 
-function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado) {
-    $query = "update produtos set nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
-        categoria_id= {$categoria_id}, usado = {$usado} where id = '{$id}'";
+function alteraProduto($conexao, Produto $produto) {
+    $query = "update produtos set nome = '{$produto->nome}', preco = {$produto->preco}, descricao = '{$produto->descricao}',
+        categoria_id= {$produto->categoria_id}, usado = {$produto->usado} where id = '{$produto->id}'";
     return mysqli_query($conexao, $query);
 }
 
